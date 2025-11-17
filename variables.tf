@@ -10,12 +10,6 @@ variable "service_account_id" {
   default     = null
 }
 
-variable "zone_id" {
-  description = "Availability zone"
-  type        = string
-  default     = "ru-central1-a"
-}
-
 variable "cluster_name" {
   description = "Spark cluster name"
   type        = string

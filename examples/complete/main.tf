@@ -38,17 +38,17 @@ module "spark" {
   source = "../../"
 
   cluster_name = "production-spark-cluster"
-  description = "Production Spark cluster for data processing"
+  description  = "Production Spark cluster for data processing"
 
   service_account_id = module.iam_accounts.id
   subnet_ids         = [module.network.private_subnets_ids[0]]
 
   driver_resource_preset = "c2-m8"
-  driver_size = 1
+  driver_size            = 1
 
   executor_resource_preset = "c4-m16"
-  executor_min_size = 2
-  executor_max_size = 4
+  executor_min_size        = 2
+  executor_max_size        = 4
 
   pip_packages = [
     "numpy==2.2.2",
