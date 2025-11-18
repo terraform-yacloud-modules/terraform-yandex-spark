@@ -13,7 +13,7 @@ variable "service_account_id" {
 variable "cluster_name" {
   description = "Spark cluster name"
   type        = string
-  default     = "minimal-spark-cluster"
+  default     = null
 }
 
 variable "description" {
@@ -37,7 +37,7 @@ variable "driver_size" {
 variable "executor_resource_preset" {
   description = "Resource preset ID for Spark executor"
   type        = string
-  default     = "c4-m16"
+  default     = "c2-m8"
 }
 
 variable "executor_min_size" {
@@ -55,7 +55,7 @@ variable "executor_max_size" {
 variable "pip_packages" {
   description = "List of pip packages to install"
   type        = list(string)
-  default     = ["numpy==2.2.2"]
+  default     = []
 }
 
 variable "logging_enabled" {
