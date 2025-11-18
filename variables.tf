@@ -19,7 +19,7 @@ variable "cluster_name" {
 variable "description" {
   description = "Spark cluster description"
   type        = string
-  default     = "created by terraform"
+  default     = null
 }
 
 variable "driver_resource_preset" {
