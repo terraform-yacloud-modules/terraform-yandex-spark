@@ -1,3 +1,10 @@
+## v0.9.0 - 2026-09-01
+### Chores
+- e9334e1 chore(deps): bump actions/checkout from 6 to 7
+
+### Miscellaneous
+- adaf373 Merge pull request [#10](https://github.com/terraform-yacloud-modules/terraform-yandex-spark/pull/10) from terraform-yacloud-modules/dependabot/github_actions/actions/checkout-7
+
 ## v0.8.0 - 2026-09-01
 ### Bug Fixes
 - 1237a74 fix: передача folder_id в примере с приоритетом tfvars над YC_FOLDER_ID
