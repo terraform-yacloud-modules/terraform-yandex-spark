@@ -1,3 +1,10 @@
+## v0.8.0 - 2026-09-01
+### Bug Fixes
+- 1237a74 fix: передача folder_id в примере с приоритетом tfvars над YC_FOLDER_ID
+
+### Miscellaneous
+- 97c9c0d Merge pull request [#12](https://github.com/terraform-yacloud-modules/terraform-yandex-spark/pull/12) from terraform-yacloud-modules/feature/add-folder-id-tfvars
+
 ## v0.7.0 - 2026-09-01
 ### Chores
 - 2859b64 chore(deps): bump actions/cache from 5.0.3 to 5.0.4
