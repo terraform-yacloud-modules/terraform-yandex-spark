@@ -1,3 +1,10 @@
+## v0.7.0 - 2026-09-01
+### Chores
+- 2859b64 chore(deps): bump actions/cache from 5.0.3 to 5.0.4
+
+### Miscellaneous
+- 8a82782 Merge pull request [#8](https://github.com/terraform-yacloud-modules/terraform-yandex-spark/pull/8) from terraform-yacloud-modules/dependabot/github_actions/actions/cache-5.0.4
+
 ## v0.6.0 - 2026-03-11
 ### Chores
 - 265442b chore(deps): bump hashicorp/setup-terraform from 3 to 4
