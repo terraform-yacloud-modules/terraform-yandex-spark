@@ -32,6 +32,6 @@ resource "yandex_spark_cluster" "my_spark_cluster" {
 
   logging = {
     enabled   = var.logging_enabled
-    folder_id = local.folder_id
+    folder_id = var.logging_enabled ? local.folder_id : null
   }
 }
