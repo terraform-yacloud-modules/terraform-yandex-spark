@@ -1,3 +1,10 @@
+## v0.10.0 - 2026-11-10
+### Bug Fixes
+- a94f740 fix: handle disabled Cloud Logging in Spark module and example
+
+### Miscellaneous
+- 218e9a7 Merge pull request [#13](https://github.com/terraform-yacloud-modules/terraform-yandex-spark/pull/13) from terraform-yacloud-modules/fix/spark-logging-disabled
+
 ## v0.9.0 - 2026-09-01
 ### Chores
 - e9334e1 chore(deps): bump actions/checkout from 6 to 7
