@@ -57,7 +57,9 @@ module "spark" {
     "numpy==2.2.2",
   ]
 
-  logging_enabled = true
+  # Cloud Logging is disabled at the cloud level in some environments.
+  # Set to true to ship Spark logs to Cloud Logging.
+  logging_enabled = false
 
   depends_on = [module.iam_accounts, module.network]
 }
