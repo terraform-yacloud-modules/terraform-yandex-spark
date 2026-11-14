@@ -1,3 +1,10 @@
+## v0.11.0 - 2026-11-14
+### Features
+- 5c7de6d feat: expose full Spark cluster configuration in the module
+
+### Miscellaneous
+- 1231974 Merge pull request [#14](https://github.com/terraform-yacloud-modules/terraform-yandex-spark/pull/14) from terraform-yacloud-modules/feature/extend-spark-cluster-config
+
 ## v0.10.0 - 2026-11-10
 ### Bug Fixes
 - a94f740 fix: handle disabled Cloud Logging in Spark module and example
