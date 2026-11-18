@@ -1,3 +1,7 @@
+## v0.12.0 - 2026-11-18
+### Miscellaneous
+- a64fac0 ci: run semver job only on push to main ([#15](https://github.com/terraform-yacloud-modules/terraform-yandex-spark/pull/15))
+
 ## v0.11.0 - 2026-11-14
 ### Features
 - 5c7de6d feat: expose full Spark cluster configuration in the module
