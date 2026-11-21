@@ -11,6 +11,9 @@ locals {
   metastore = var.metastore_cluster_id == null ? null : {
     cluster_id = var.metastore_cluster_id
   }
+
+  # The driver pool is either fixed-size or autoscaling, never both.
+  driver_autoscaling = var.driver_min_size != null || var.driver_max_size != null
 }
 
 resource "yandex_spark_cluster" "my_spark_cluster" {
@@ -25,7 +28,9 @@ resource "yandex_spark_cluster" "my_spark_cluster" {
     resource_pools = {
       driver = {
         resource_preset_id = var.driver_resource_preset
-        size               = var.driver_size
+        size               = local.driver_autoscaling ? null : var.driver_size
+        min_size           = local.driver_autoscaling ? var.driver_min_size : null
+        max_size           = local.driver_autoscaling ? var.driver_max_size : null
       }
       executor = {
         resource_preset_id = var.executor_resource_preset
@@ -57,4 +62,26 @@ resource "yandex_spark_cluster" "my_spark_cluster" {
   }
 
   maintenance_window = var.maintenance_window
+
+  dynamic "timeouts" {
+    for_each = var.timeouts == null ? [] : [var.timeouts]
+
+    content {
+      create = timeouts.value.create
+      update = timeouts.value.update
+      delete = timeouts.value.delete
+    }
+  }
+
+  lifecycle {
+    precondition {
+      condition     = (var.driver_min_size == null) == (var.driver_max_size == null)
+      error_message = "driver_min_size and driver_max_size must be set together."
+    }
+
+    precondition {
+      condition     = local.driver_autoscaling ? var.driver_min_size <= var.driver_max_size : true
+      error_message = "driver_min_size must be less than or equal to driver_max_size."
+    }
+  }
 }

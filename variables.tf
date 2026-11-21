@@ -35,9 +35,21 @@ variable "driver_resource_preset" {
 }
 
 variable "driver_size" {
-  description = "Number of driver instances"
+  description = "Number of driver instances for the fixed-size driver pool. Ignored when driver_min_size and driver_max_size are set"
   type        = number
   default     = 1
+}
+
+variable "driver_min_size" {
+  description = "Minimum number of driver instances for the autoscaling driver pool. Must be set together with driver_max_size"
+  type        = number
+  default     = null
+}
+
+variable "driver_max_size" {
+  description = "Maximum number of driver instances for the autoscaling driver pool. Must be set together with driver_min_size"
+  type        = number
+  default     = null
 }
 
 variable "executor_resource_preset" {
@@ -129,6 +141,16 @@ variable "maintenance_window" {
     type = string
     day  = optional(string)
     hour = optional(number)
+  })
+  default = null
+}
+
+variable "timeouts" {
+  description = "Operation timeouts for the Spark cluster. Each value is a duration string such as \"30m\" or \"1h\""
+  type = object({
+    create = optional(string)
+    update = optional(string)
+    delete = optional(string)
   })
   default = null
 }

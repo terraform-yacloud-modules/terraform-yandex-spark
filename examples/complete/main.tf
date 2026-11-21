@@ -40,6 +40,7 @@ module "network" {
 
 resource "yandex_vpc_security_group" "spark" {
   name       = "spark-cluster-sg"
+  folder_id  = coalesce(var.folder_id, data.yandex_client_config.client.folder_id)
   network_id = module.network.vpc_id
 
   labels = {
@@ -79,7 +80,9 @@ module "spark" {
   security_group_ids = [yandex_vpc_security_group.spark.id]
 
   driver_resource_preset = "c2-m8"
-  driver_size            = 1
+  # Driver pool autoscaling: driver_size is ignored when min/max are set.
+  driver_min_size = 1
+  driver_max_size = 2
 
   executor_resource_preset = "c4-m16"
   executor_min_size        = 2
@@ -104,6 +107,12 @@ module "spark" {
   }
 
   deletion_protection = false
+
+  timeouts = {
+    create = "45m"
+    update = "45m"
+    delete = "30m"
+  }
 
   # Cloud Logging is disabled at the cloud level in some environments.
   # Set to true to ship Spark logs to Cloud Logging.
